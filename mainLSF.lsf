@@ -125,17 +125,37 @@ for(i=1;i<=length(metadata.material);0){
    }
 }
 
+
 #final confirmation page
+maxperpage = 10;
+count=0; #for writing to new page is list too long
+for (i=1;i<=length(layer_def_list);i=i+1){
+   if (count == 0){
+       newwizardpage("Next");
+       wizardwidget("label","==Layers Export Information==");
+       wizardwidget("label","Name\tLayer\tZpos");
+   }
+                
+   if (count<=maxperpage){
+       wizardwidget("label",metadata.name{i}+"\t"+layer_def_list{i}.layer+"\t"+num2str(layer_def_list{i}.z));
+       count=count+1;
+   }
+   
+   if(count==maxperpage){
+       out = runwizard;
+       if(out==0){killwizard;}
+       count = 0;
+   }
+}
+#need this to finish off the final page
+out = runwizard;
+if(out==0){killwizard;}
+
+#Export page
 newwizardpage("Export to GDS");
 wizardwidget("label","Export Configuration (Leave blank for defaults)");
 wizardwidget("string","GDS Filename\t(\"output.gds\"):","output.gds");
 wizardwidget("string","Top Cell\t(\"model\"):",",model");
-wizardwidget("label","==Layers Export Information==");
-wizardwidget("label","Name\tLayer\tZpos");
-for (i=1;i<=length(layer_def_list);i=i+1){
-   
-   wizardwidget("label",metadata.name{i}+"\t"+layer_def_list{i}.layer+"\t"+num2str(layer_def_list{i}.z)); 
-}
 
 out = runwizard;
 if(out==0){
