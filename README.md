@@ -8,10 +8,10 @@ Using the Lumerical GUI `MainLSF.lsf`, users can follow the popup wizard's promp
 
 # Installation
 ## Python Prerequistes
-- [ ] Python 3
-- [ ] Klayout Python API 
-- [ ] LumAPI
-- [ ] numpy
+- Python 3
+- Klayout Python API
+- LumAPI
+- NumPy
 
 # Installation - Lumerical GUI
 1. Open a command prompt and navigate to to the Lumerical Python installation, typically located at `C:\Program Files\Lumerical\vXXX\python`. Replace XXX with version number as necessary.
