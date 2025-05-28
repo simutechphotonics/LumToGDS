@@ -45,7 +45,7 @@ Example available in `Main.py`.
     - If the layer assignment is not loaded from a file, the command-line will provide a UI to create layer assignments.
 
 # Example File
-A makefile is provided that generates geoemtries in different situations to demonstrate LumToGDS' functionality.
+A makefile is provided that generates geometries in different situations to demonstrate LumToGDS' functionality.
 1. Launch FDTD and load/run the script `example/example_makefile.lsf`
 2. Run via the LSF Wizard Method or Python Method.
 
