@@ -24,7 +24,7 @@ Using the Lumerical GUI `MainLSF.lsf`, users can follow the popup wizard's promp
 
 # How to use
 - All files must be in the same folder. The relative file hierarchy of `.py`, `.lsf`, and `.lsfx` files MUST remain as is.
-- Do not delete the output folder
+- Do not delete the output folder. You may delete the contents of the output folder.
 - File names beginnning with `TEMP_output` and ending with `.gds` in the output folder will be merged into `lumexport.gds` and deleted automatically. To avoid any chance of accidental deletion, please do not save important files in this folder.
 
 ## Via LSF
