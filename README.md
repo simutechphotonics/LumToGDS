@@ -1,7 +1,5 @@
 # LumToGDS
 
-Hi majid
-
 Lumerical GUI Wizard and Python Library for exporting geometries into GDS format.
 Wrapper built around functions released by Lumerical: [Link](https://optics.ansys.com/hc/en-us/articles/1500006203341-GDSII-Export-Automation)
 Users can choose to use the Lumerical GUI, or import the library into a Python workflow.
