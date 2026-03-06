@@ -43,7 +43,7 @@ function draw_entry_page(i,metadata,dupdata){
     wizardwidget("label",endl);
     if(any(i==dupdata(:,2))){wizardwidget("label","<This object has a shared layer>");}
     else{    
-    wizardwidget("checkbox","Include Layer",1);
+    #wizardwidget("checkbox","Include Layer",1);
     wizardwidget("number","Layer Number:",i);
     wizardwidget("number","DataType Number:",0); 
     }                          
@@ -106,7 +106,7 @@ for(i=1;i<=length(metadata.material);0){
              }         
          else{
 	  layer_def_list{i} = struct;
-	  layer_def_list{i}.layer = num2str(wizardgetdata(2))+":"+num2str(wizardgetdata(3));
+	  layer_def_list{i}.layer = num2str(wizardgetdata(1))+":"+num2str(wizardgetdata(2));
 	  layer_def_list{i}.z = (metadata.zmin{i}+metadata.zmax{i})/2;
          if (metadata.material{i} == "<Object defined dielectric>"){	  
 	      layer_def_list{i}.material = metadata.index{i};

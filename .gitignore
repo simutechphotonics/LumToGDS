@@ -2,3 +2,5 @@ __pycache__
 output/
 *.fsp
 .vscode/launch.json
+.idea
+.venv
