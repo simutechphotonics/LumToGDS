@@ -1,2 +1,3 @@
 klayout
 numpy
+ansys-lumerical-core
