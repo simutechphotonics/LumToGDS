@@ -9,11 +9,11 @@
 #you wish to use it for later Klayout versions.
 
 #Script has be in the library folder to properly call other library files.
-thispath=splitstring(currentscriptname,"mainLSF.lsf");
+thispath=splitstring(currentscriptname,"LumToGDS_GUI.lsf");
 cd(thispath{1});
 
 GDSexport_core;
-LUM_auto_detect;
+lum_auto_detect;
 
 ##copy current file for exporting
 #orifilename = currentfilename;

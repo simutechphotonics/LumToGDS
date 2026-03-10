@@ -1,4 +1,4 @@
-import PY_klayout
+import py_klayout
 import ansys.lumerical.core as lumapi
 import numpy as np
 import os #for clearing terminal if ran from python terminal
@@ -31,14 +31,14 @@ class LumToGDS:
             original_file,
             copy_file
             )
-        if PY_klayout.klayout_mergefiles():
+        if py_klayout.klayout_mergefiles():
             print("Success: Export Complete.")
         else:
             print("Error: Final merge step did not complete.")
 
     def get_object_metadata(self):
         fdtd = lumapi.FDTD(hide=self.HIDE_LUMERICAL, filename=self.INPUT_FILENAME)
-        code = open('LUM_auto_detect.lsf', 'r').read()
+        code = open('lum_auto_detect.lsf', 'r').read()
         fdtd.eval(code) #loads the function into Lumerical
 
         #Copy file to prevent messing up original file while traversing the object tree
@@ -263,17 +263,19 @@ class LumToGDS:
         fdtd.eval("cd('"+thispath+"');")
 
         #putv can be used to pass variables, this is used here because sometimes LSF method of importing scripts doesn't work in nested functions
-        code = open('PY_exportmacro.lsf', 'r').read()
+        code = open('py_exportmacro.lsf', 'r').read()
         fdtd.putv('metadata',metadata)
         fdtd.putv('layer_def',layer_def)
         fdtd.putv('gds_filename_temp',self.DEFAULT_GDS_NAME_TEMP)
         fdtd.eval(code) #loads the function into Lumerical
 
         #remove temporary copy of the fsp file
-        code = open('LUM_auto_detect.lsf', 'r').read()
+        code = open('lum_auto_detect.lsf', 'r').read()
         fdtd.eval(code) #loads the function into Lumerical
         fdtd.remove_copy_file(original_file,copy_file)
 
 if __name__ == "__main__":
     myexport = LumToGDS()
+    #myexport.LOAD_LAYER_FILE = True
+    #myexport.SAVE_LAYER_FILE = False
     myexport.main()
