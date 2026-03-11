@@ -4,8 +4,11 @@ Lumerical GUI Wizard and Python Library for exporting geometries into GDS format
 Wrapper built around functions released by Lumerical: [Link](https://optics.ansys.com/hc/en-us/articles/1500006203341-GDSII-Export-Automation)
 Users can choose to use the Lumerical GUI, or import the library into a Python workflow.
 
-Using the Lumerical GUI `MainLSF.lsf`, users can follow the popup wizard's prompt to quickly export:
+Using the Lumerical GUI `LumToGDS_GUI.lsf`, users can follow the popup wizard's prompt to quickly export:
 ![GUI](/images/GUI.png)
+
+Supports exporting multiple objects and different layers/datatypes:
+![example](/images/example.png)
 
 # Installation
 ## Python Prerequistes
@@ -15,7 +18,7 @@ Using the Lumerical GUI `MainLSF.lsf`, users can follow the popup wizard's promp
 - NumPy
 
 # Installation - Lumerical GUI
-1. Open a command prompt and navigate to to the Lumerical Python installation, typically located at `C:\Program Files\Lumerical\vXXX\python`. Replace XXX with version number as necessary.
+1. Open a command prompt and navigate to the Lumerical Python installation, typically located at `C:\Program Files\Lumerical\vXXX\python`. Replace XXX with version number as necessary.
 2. Enter the following command to install the Klayout module: `.\python.exe -m pip install klayout`
 
 # Installation - Python
@@ -30,13 +33,13 @@ Using the Lumerical GUI `MainLSF.lsf`, users can follow the popup wizard's promp
 
 ## Running with LSF
 1. Launch Lumerical FDTD and load your .fsp file you wish to extract.
-2. In the script editor, load "LumToGDS_GUI.lsf" and click "Run".
+2. In the script editor, load `LumToGDS_GUI.lsf` and click "Run".
     - A wizard should pop up and provide you with the detected objects for confirmation
     - Follow the wizard instructions and provide the layout layer number that will be assigned to each detected object/material
     - Objects with same material will automatically use the same entry, simplifying the entry process.
     - Objects with the same material and different height will each require an entry.
 3. A command-line window should pop up. If the readout confirms successs GDS extraction, you can close the CMD window.
-4. Navigate to where you have saved the folder containing the LumToGDS library. Under the "output" folder, you should find your exported file "lumexport.gds"
+4. Navigate to where you have saved the folder containing the LumToGDS library. Under the `output` folder, you should find your exported file `lumexport.gds`.
 
 ## Running in Python
 Example available in `LumToGDS.py`.
@@ -51,6 +54,9 @@ Example available in `LumToGDS.py`.
    ```angular2html
    myobj.main()
    ```
+4. The CMD should enter the interface and the layers can be defined via direct input:
+![pythonui](/images/pythonUI.png)
+
 # Example File
 A makefile is provided that generates geometries in different situations to demonstrate LumToGDS' functionality.
 1. Launch FDTD and load/run the script `example/example_makefile.lsf`
