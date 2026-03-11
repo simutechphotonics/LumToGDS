@@ -40,7 +40,7 @@ Using the Lumerical GUI `MainLSF.lsf`, users can follow the popup wizard's promp
 
 ## Running in Python
 Example available in `LumToGDS.py`.
-1. Import LumToGDS
+1. Import LumToGDS.
 2. Instantiate an object class and edit any desired settings.
    ```
    myobj = LumToGDS()
