@@ -11,7 +11,7 @@ Using the Lumerical GUI `MainLSF.lsf`, users can follow the popup wizard's promp
 ## Python Prerequistes
 - Python 3
 - Klayout Python API
-- LumAPI
+- PyLumerical (alternatively: LumAPI)
 - NumPy
 
 # Installation - Lumerical GUI
@@ -30,7 +30,7 @@ Using the Lumerical GUI `MainLSF.lsf`, users can follow the popup wizard's promp
 
 ## Running with LSF
 1. Launch Lumerical FDTD and load your .fsp file you wish to extract.
-2. In the script editor, load "mainLSF.lsf" and click "Run".
+2. In the script editor, load "LumToGDS_GUI.lsf" and click "Run".
     - A wizard should pop up and provide you with the detected objects for confirmation
     - Follow the wizard instructions and provide the layout layer number that will be assigned to each detected object/material
     - Objects with same material will automatically use the same entry, simplifying the entry process.
@@ -39,12 +39,18 @@ Using the Lumerical GUI `MainLSF.lsf`, users can follow the popup wizard's promp
 4. Navigate to where you have saved the folder containing the LumToGDS library. Under the "output" folder, you should find your exported file "lumexport.gds"
 
 ## Running in Python
-Example available in `Main.py`.
-1. `Import lumtogds`.
-2. Create a settings object with the parameters you wish to run the export with.
-3. call `main()`
+Example available in `LumToGDS.py`.
+1. Import LumToGDS
+2. Instantiate an object class and edit any desired settings.
+   ```
+   myobj = LumToGDS()
+   myobj.INPUT_FILENAME = "example/test.fsp"
+   ```
+3. Call `main()`
     - If the layer assignment is not loaded from a file, the command-line will provide a UI to create layer assignments.
-
+   ```angular2html
+   myobj.main()
+   ```
 # Example File
 A makefile is provided that generates geometries in different situations to demonstrate LumToGDS' functionality.
 1. Launch FDTD and load/run the script `example/example_makefile.lsf`
@@ -56,6 +62,7 @@ A makefile is provided that generates geometries in different situations to demo
 - Geometry objects in the Lumerical object tree MUST have unique names. Same names will be overwritten by newer entries, no error will be prompted.
 - Geoemtry objects cannot be nested (e.g. Groups, such as containers, structure groups, analysis groups, etc.). 
 Please flatten the whole hierachy for extraction. You may consider copy and pasting the tree into a new FDTD instance by selecting the tree and ctrl+c/ctrl+v into a new FDTD file.
+- Current implementation supports only up to 100 objects.
 
 ## Same layer objects
 To reduce user input, the script will automatically flag an object as same-layer if its properties match another already-defined object. 
