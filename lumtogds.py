@@ -110,7 +110,7 @@ class LumToGDS:
             rangesupported = False
 
         output = 'Command List===\n'+\
-            '"X Y"    | Assign layer Y to object X. Datatype remainds untouched. Value up to 100.\n'+\
+            '"X Y"    | Assign layer Y to object X. Datatype remains untouched. Value up to 100.\n'+\
             '"X Y Z"  | Assign a layer Y and datatype Z to object X. Value up to 100.\n'+\
             '"X none" | Unassign the layer for Object X.\n'+\
             '"done"   | Continue to the next step of exporting with the above layer information.\n'+\
